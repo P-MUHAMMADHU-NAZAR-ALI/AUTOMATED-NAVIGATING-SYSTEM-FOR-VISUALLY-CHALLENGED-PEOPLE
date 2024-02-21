@@ -1,0 +1,75 @@
+const int trigPin1 = 2;    // Trigger pin of the first ultrasonic sensor
+const int echoPin1 = 3;    // Echo pin of the first ultrasonic sensor
+const int vibratePin1 = 7; // Control pin of the first vibration motor
+
+const int trigPin2 = 4;    // Trigger pin of the second ultrasonic sensor
+const int echoPin2 = 5;    // Echo pin of the second ultrasonic sensor
+const int vibratePin2 = 8; // Control pin of the second vibration motor
+
+void setup() {
+  Serial.begin(9600);
+
+  // Setup for the first ultrasonic sensor
+  pinMode(trigPin1, OUTPUT);
+  pinMode(echoPin1, INPUT);
+  pinMode(vibratePin1, OUTPUT);
+  digitalWrite(vibratePin1, LOW); // Initially turn off the first vibration motor
+
+  // Setup for the second ultrasonic sensor
+  pinMode(trigPin2, OUTPUT);
+  pinMode(echoPin2, INPUT);
+  pinMode(vibratePin2, OUTPUT);
+  digitalWrite(vibratePin2, LOW); // Initially turn off the second vibration motor
+}
+
+void loop() {
+  // Measure distance for the first ultrasonic sensor
+  long duration1, distance1;
+  digitalWrite(trigPin1, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin1, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin1, LOW);
+  duration1 = pulseIn(echoPin1, HIGH);
+  distance1 = duration1 * 0.034 / 2;
+
+  Serial.print("Distance 1: ");
+  Serial.println(distance1);
+
+  // Measure distance for the second ultrasonic sensor
+  long duration2, distance2;
+  digitalWrite(trigPin2, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin2, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin2, LOW);
+  duration2 = pulseIn(echoPin2, HIGH);
+  distance2 = duration2 * 0.034 / 2;
+
+  Serial.print("Distance 2: ");
+  Serial.println(distance2);
+
+  // Check if distance from the first sensor is less than 500 cm (5 meters)
+  if (distance1 < 500) {
+    // Turn on the first vibration motor
+    digitalWrite(vibratePin1, HIGH);
+    Serial.println("Object detected by Sensor 1! Vibrate 1 ON");
+  } else {
+    // Turn off the first vibration motor
+    digitalWrite(vibratePin1, LOW);
+    Serial.println("No object detected by Sensor 1. Vibrate 1 OFF");
+  }
+
+  // Check if distance from the second sensor is less than 500 cm (5 meters)
+  if (distance2 < 500) {
+    // Turn on the second vibration motor
+    digitalWrite(vibratePin2, HIGH);
+    Serial.println("Object detected by Sensor 2! Vibrate 2 ON");
+  } else {
+    // Turn off the second vibration motor
+    digitalWrite(vibratePin2, LOW);
+    Serial.println("No object detected by Sensor 2. Vibrate 2 OFF");
+  }
+
+  delay(1000); // Wait for a short duration before the next measurement
+}
