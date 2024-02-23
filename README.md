@@ -16,16 +16,16 @@ This repository contains code and resources for smart wearables designed to assi
 
 The blind_shoe folder contains resources related to the smart shoe component of the system.
 
-- *Google Map Integration and Location Tracking:* GPS LOCATION TRACKING.py - Code for integrating Google Maps and tracking the user's location.
-- *Vibrator Alerts:* vibrator(current condition).py - Code for implementing discreet vibrator alerts.
-- *Buzzer:* buzzer(previous condition).py - Code for implementing buzzer alerts (previous version).
+- *Google Map Integration and Location Tracking:* GPS LOCATION TRACKING - Code for integrating Google Maps and tracking the user's location.
+- *Vibrator Alerts:* vibrator(current condition)- Code for implementing discreet vibrator alerts.
+- *Buzzer:* buzzer(previous condition) - Code for implementing buzzer alerts (previous version).
 - *Circuit Diagram:* circuit diagram.png - Diagram illustrating the circuit connections for the blind shoe component.
 
 ### Spectacles
 
 The spectacles folder contains resources related to the smart glasses component of the system.
 
-- *Obstacle Detection:* code.py - Code for detecting obstacles from the top position of the user.
+- *Obstacle Detection:* code - Code for detecting obstacles from the top position of the user.
 - *Circuit Diagram:* circuit diagram.png - Diagram illustrating the circuit connections for the smart glasses component.
 
 ## Usage
